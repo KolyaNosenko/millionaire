@@ -7,6 +7,10 @@
     src: url("assets/fonts/Inter/Inter-Medium.ttf");
 }
 @font-face {
+    font-family: "Inter-SemiBold";
+    src: url("assets/fonts/Inter/Inter-SemiBold.ttf");
+}
+@font-face {
     font-family: "Inter-Bold";
     src: url("assets/fonts/Inter/Inter-Bold.ttf");
 }

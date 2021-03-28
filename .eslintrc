@@ -11,7 +11,8 @@
     "react", "@typescript-eslint", "jest"
   ],
   "rules": {
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "react/jsx-props-no-spreading": "off"
   },
   "env": {
     "browser": true,
