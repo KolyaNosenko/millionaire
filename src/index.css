@@ -1,0 +1,61 @@
+/* TODO think about this */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6, label {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+}
+
+button,
+input[type="submit"],
+input[type="file"],
+input[type="button"] {
+    border-radius: 0;
+    color: inherit;
+    padding: 0;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+input,
+button,
+textarea,
+select {
+    letter-spacing: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    appearance: none;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.5;
+}
