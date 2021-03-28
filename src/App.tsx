@@ -4,6 +4,8 @@ import styled, { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./theme";
 
 const Main = styled.main`
+  font-size: 16px;
+  font-family: ${(props) => props.theme.fontFamilies.primaryRegular}, serif;
   color: ${(props) => props.theme.colors.primary};
 `;
 
