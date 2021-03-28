@@ -1,11 +1,11 @@
 export interface CustomTheme {
-    colors: {
-        primary: string;
-    }
+  colors: {
+    primary: string;
+  };
 }
 
 export const defaultTheme: CustomTheme = {
-    colors: {
-        primary: "#222"
-    }
-}
+  colors: {
+    primary: "#222",
+  },
+};
