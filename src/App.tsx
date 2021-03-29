@@ -10,11 +10,6 @@ const Main = styled.main`
   font-size: 16px;
   font-family: ${(props) => props.theme.fontFamilies.primaryRegular}, serif;
   color: ${(props) => props.theme.colors.secondaryDark};
-  background: linear-gradient(
-    to left top,
-    ${(props) => props.theme.colors.primaryLight2} 50%,
-    #ffffff 50%
-  );
   height: 100vh;
   overflow: hidden;
 `;

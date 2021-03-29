@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { ReactComponent as _GreetingsIcon } from "src/assets/icons/greetings.svg";
-import Button from "../components/Button";
+import Button from "src/components/Button";
 
 // TODO think about semantic
 const Root = styled.div`
@@ -10,6 +10,11 @@ const Root = styled.div`
   align-items: center;
   justify-content: center;
   padding: 15px;
+  background: linear-gradient(
+    to left top,
+    ${(props) => props.theme.colors.primaryLight2} 50%,
+    #ffffff 50%
+  );
 `;
 
 const GreetingsIcon = styled(_GreetingsIcon)`

@@ -19,7 +19,7 @@ const GameProvider = ({
 }: {
   children: React.ReactNode;
 }): JSX.Element => {
-  const initialData: GameContextData = { step: GameSteps.START };
+  const initialData: GameContextData = { step: GameSteps.OVER };
 
   return (
     <GameContext.Provider value={initialData}>{children}</GameContext.Provider>
