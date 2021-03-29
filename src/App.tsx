@@ -1,8 +1,8 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 
 import Button from "src/components/Button";
-import { defaultTheme } from "src/theme";
+import { useGameContext } from "./context/GameContext";
 
 const Main = styled.main`
   font-size: 16px;
@@ -18,12 +18,13 @@ const Main = styled.main`
 `;
 
 function App(): JSX.Element {
+  const { step } = useGameContext();
+
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Main>
-        <Button>Start</Button>
-      </Main>
-    </ThemeProvider>
+    <Main>
+      <Button>Start</Button>
+      {step}
+    </Main>
   );
 }
 
