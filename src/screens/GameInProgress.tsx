@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { ReactComponent as _AnswerBackground } from "src/assets/icons/answer-bg.svg";
+
 import Score from "src/components/Score";
 
 const Root = styled.div`
@@ -8,6 +10,11 @@ const Root = styled.div`
 
 const Content = styled.div`
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // TODO change to proper
+  padding: 80px;
   background-color: ${(props) => props.theme.colors.secondaryLight2};
 `;
 
@@ -43,6 +50,60 @@ const ScoreBarItem = styled.li`
   }
 `;
 
+const AnswerList = styled.ul`
+  // TODO change
+  margin-top: auto;
+`;
+
+const AnswerListItem = styled.li`
+  // TODO change
+  width: 389px;
+`;
+
+const Answer = styled.div`
+  position: relative;
+  z-index: 1;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 8px 48px 8px 32px;
+
+  font-size: 20px;
+  line-height: 1.16;
+`;
+
+const AnswerText = styled.div`
+  position: relative;
+  z-index: 1;
+`;
+
+const AnswerWrapper = styled.div`
+  position: relative;
+  padding-right: 16px;
+  padding-left: 16px;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+    border-top: 1px solid ${(props) => props.theme.colors.secondary};
+  }
+`;
+
+export const AnswerBackground = styled(_AnswerBackground)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const GameInProgress = (): JSX.Element => {
   return (
     <Root>
@@ -50,6 +111,17 @@ const GameInProgress = (): JSX.Element => {
         <Question>
           How old your elder brother was 10 years before you was born, mate?
         </Question>
+
+        <AnswerList>
+          <AnswerListItem>
+            <AnswerWrapper>
+              <Answer>
+                <AnswerText>A 10 years</AnswerText>
+                <AnswerBackground />
+              </Answer>
+            </AnswerWrapper>
+          </AnswerListItem>
+        </AnswerList>
       </Content>
       <ScoreBarWrapper>
         <ScoreBar>
