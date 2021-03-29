@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import Button from "src/components/Button";
-import { useGameContext } from "./context/GameContext";
+import { useGameContext } from "src/context/GameContext";
+import GameStart from "src/screens/GameStart";
 
 const Main = styled.main`
   font-size: 16px;
@@ -22,8 +22,7 @@ function App(): JSX.Element {
 
   return (
     <Main>
-      <Button>Start</Button>
-      {step}
+      <GameStart />
     </Main>
   );
 }
