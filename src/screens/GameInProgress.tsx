@@ -54,10 +54,10 @@ const GameInProgress = (): JSX.Element => {
       <ScoreBarWrapper>
         <ScoreBar>
           <ScoreBarItem>
-            <Score>$1,000,000</Score>
+            <Score status="passed">$1,000,000</Score>
           </ScoreBarItem>
           <ScoreBarItem>
-            <Score>$1,000,000</Score>
+            <Score status="active">$1,000,000</Score>
           </ScoreBarItem>
         </ScoreBar>
       </ScoreBarWrapper>
