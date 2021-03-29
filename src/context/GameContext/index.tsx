@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-enum GameSteps {
+export enum GameSteps {
   START,
   IN_PROGRESS,
   OVER,
