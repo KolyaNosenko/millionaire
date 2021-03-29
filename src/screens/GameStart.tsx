@@ -39,7 +39,7 @@ const GameStartButton = styled(Button)`
   min-width: 296px;
 `;
 
-const GameInProgress = (): JSX.Element => {
+const GameStart = (): JSX.Element => {
   return (
     <Root>
       <GreetingsIconWrapper>
@@ -55,4 +55,4 @@ const GameInProgress = (): JSX.Element => {
   );
 };
 
-export default GameInProgress;
+export default GameStart;
