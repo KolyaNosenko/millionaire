@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-import {createReducer} from "@reduxjs/toolkit";
-import {GameScreens} from "src/types";
-import {finishGame, initializeGame, startGame} from "./actions";
+import { createReducer } from "@reduxjs/toolkit";
+import { GameScreens } from "src/types";
+import { finishGame, initializeGame, startGame } from "./actions";
 
-import {StoreState} from "./types";
+import { StoreState } from "./types";
 
 const initialState: StoreState = {
   currentQuestion: 0,
