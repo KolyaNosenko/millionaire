@@ -1,5 +1,6 @@
 import { StoreState } from "src/store";
 import {
+  Answer,
   AnswerDTO,
   GameDTO,
   GameScreens,
@@ -53,5 +54,13 @@ export function createQuestion(question: Partial<Question> = {}): Question {
     price: 100,
     correctAnswer: 1,
     ...question,
+  };
+}
+
+export function createAnswer(answer: Partial<Answer> = {}): Answer {
+  return {
+    idx: 1,
+    text: "Good",
+    ...answer,
   };
 }
