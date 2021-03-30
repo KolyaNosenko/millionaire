@@ -13,3 +13,9 @@ export function sortAnswers<T extends { idx: number }>(
     (question1, question2) => question1.idx - question2.idx
   );
 }
+
+export async function sleep(time: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+export const TIMEOUT_AFTER_ANSWER = 500;

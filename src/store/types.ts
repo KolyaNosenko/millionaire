@@ -1,6 +1,6 @@
 import { ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Answer, GameScreens, Question } from "src/types";
-import { finishGame, initializeGame, setAnswer } from "./actions";
+import { finishGame, initializeGame, nextQuestion, setAnswer } from "./actions";
 
 export interface StoreState {
   gameId?: string;
@@ -13,7 +13,8 @@ export interface StoreState {
 export type StoreActions =
   | ReturnType<typeof finishGame>
   | ReturnType<typeof initializeGame>
-  | ReturnType<typeof setAnswer>;
+  | ReturnType<typeof setAnswer>
+  | ReturnType<typeof nextQuestion>;
 
 export type ThunkedAction<T = void> = ThunkAction<
   T,
