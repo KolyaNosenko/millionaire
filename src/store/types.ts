@@ -5,5 +5,5 @@ export interface StoreState {
   screen: GameSteps;
   currentQuestion: number;
   questions: { [questionIndex: number]: Question };
-  answers: { [questionIndex: number]: Answer };
+  answers: { [questionIndex: number]: Array<Answer> };
 }

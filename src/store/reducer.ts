@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from "@reduxjs/toolkit";
 import { GameSteps } from "src/types";
-import { finishGame, startGame } from "./actions";
+import { finishGame, startGame, initializeGame } from "./actions";
 
 import { StoreState } from "./types";
 
@@ -19,6 +19,10 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(finishGame, (state) => {
       state.screen = GameSteps.OVER;
+    })
+    .addCase(initializeGame, (state, { payload }) => {
+      state.questions = payload.questions;
+      state.answers = payload.answers;
     });
 });
 

@@ -5,6 +5,7 @@ export * from "./actions";
 export * from "./types";
 
 export default function createStore() {
+  // TODO think about dev tools in prod
   return configureStore({
     reducer,
   });

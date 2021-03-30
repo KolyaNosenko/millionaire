@@ -1,9 +1,9 @@
-interface AnswerDTO {
+export interface AnswerDTO {
   index: number;
   text: string;
 }
 
-interface QuestionDTO {
+export interface QuestionDTO {
   index: number;
   text: string;
   price: number;
@@ -11,7 +11,7 @@ interface QuestionDTO {
   answers: Array<AnswerDTO>;
 }
 
-interface GameDTO {
+export interface GameDTO {
   id: string;
   questions: Array<QuestionDTO>;
 }
