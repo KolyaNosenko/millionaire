@@ -13,13 +13,12 @@ export const ScoreWrapper = styled.div<{
   &:before {
     content: "";
     position: absolute;
-    height: 1px;
+    height: 0;
     width: 100%;
     top: 50%;
     left: 0;
-    z-index: 1;
     transform: translateY(-50%);
-    border-top: 1px solid;
+    border-top: thin solid;
     border-color: ${(props) =>
       props.status === "active"
         ? props.theme.colors.primary
@@ -46,7 +45,6 @@ export const ScoreBackground = styled(_ScoreBackground)<{
 export const ScoreContent = styled.div`
   position: relative;
   min-height: 40px;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +56,6 @@ export const ScoreContent = styled.div`
 
 export const ScoreLabel = styled.div<{ status: ScoreStatus }>`
   position: relative;
-  z-index: 1;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -86,8 +83,8 @@ const Score = ({ children, status = "incoming" }: Props): JSX.Element => {
   return (
     <ScoreWrapper status={status}>
       <ScoreContent>
-        <ScoreLabel status={status}>{children}</ScoreLabel>
         <ScoreBackground status={status} />
+        <ScoreLabel status={status}>{children}</ScoreLabel>
       </ScoreContent>
     </ScoreWrapper>
   );
