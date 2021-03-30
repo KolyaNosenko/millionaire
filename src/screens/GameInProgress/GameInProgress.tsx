@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Score from "src/components/Score";
-import Answer from "../components/Answer";
+import Answer from "src/components/Answer";
 
 const Root = styled.div`
   height: 100%;
