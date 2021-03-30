@@ -23,7 +23,7 @@ export function createQuestionDTO(
   questionDTO: Partial<QuestionDTO> = {}
 ): QuestionDTO {
   return {
-    index: 1,
+    idx: 1,
     text: "How are you?",
     price: 100,
     correctAnswer: 1,
@@ -34,7 +34,7 @@ export function createQuestionDTO(
 
 export function createAnswerDTO(answerDTO: Partial<AnswerDTO> = {}): AnswerDTO {
   return {
-    index: 1,
+    idx: 1,
     text: "Good",
     ...answerDTO,
   };

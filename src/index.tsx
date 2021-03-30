@@ -4,19 +4,12 @@ import ReactDOM from "react-dom";
 import "normalize.css";
 import "./index.css";
 
-import { ThemeProvider } from "styled-components";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { defaultTheme } from "./theme";
-import GameProvider from "./context/GameContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={defaultTheme}>
-      <GameProvider>
-        <App />
-      </GameProvider>
-    </ThemeProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

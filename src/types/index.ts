@@ -1,10 +1,10 @@
 export interface AnswerDTO {
-  index: number;
+  idx: number;
   text: string;
 }
 
 export interface QuestionDTO {
-  index: number;
+  idx: number;
   text: string;
   price: number;
   correctAnswer: number;
@@ -17,7 +17,7 @@ export interface GameDTO {
 }
 
 export interface Question {
-  index: number;
+  idx: number;
   text: string;
   price: number;
   correctAnswer: number;

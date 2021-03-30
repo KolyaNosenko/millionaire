@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { createReducer } from "@reduxjs/toolkit";
-import { GameSteps } from "src/types";
-import { finishGame, startGame, initializeGame } from "./actions";
+import {createReducer} from "@reduxjs/toolkit";
+import {GameSteps} from "src/types";
+import {finishGame, initializeGame, startGame} from "./actions";
 
-import { StoreState } from "./types";
+import {StoreState} from "./types";
 
 const initialState: StoreState = {
   currentQuestion: 0,
@@ -23,6 +23,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(initializeGame, (state, { payload }) => {
       state.questions = payload.questions;
       state.answers = payload.answers;
+      state.screen = GameSteps.IN_PROGRESS;
+      state.currentQuestion = payload.currentQuestion;
     });
 });
 

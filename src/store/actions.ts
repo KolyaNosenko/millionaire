@@ -7,25 +7,25 @@ export const initializeGame = createAction(
   "INITIALIZE_GAME",
   (game: GameDTO) => {
     //  TODO move to utils
-    const sortedQuestions = game.questions.sort(
-      (question1, question2) => question1.index - question2.index
+    const sortedQuestions = [...game.questions].sort(
+      (question1, question2) => question1.idx - question2.idx
     );
 
     const answers: { [questionIndex: number]: Array<Answer> } = {};
 
     const questions = sortedQuestions.reduce(
-      (acc: { [index: number]: Question }, question, index, arr) => {
+      (acc: { [index: number]: Question }, question, arrayIndex, arr) => {
         //  TODO move to utils
-        const sortedAnswers = question.answers.sort(
-          (answer1, answer2) => answer1.index - answer2.index
+        const sortedAnswers = [...question.answers].sort(
+          (answer1, answer2) => answer1.idx - answer2.idx
         );
-        answers[question.index] = sortedAnswers;
+        answers[question.idx] = sortedAnswers;
 
         return {
           ...acc,
-          [question.index]: {
+          [question.idx]: {
             ...question,
-            nextQuestionIndex: arr[index + 1] && arr[index + 1].index,
+            nextQuestionIndex: arr[arrayIndex + 1] && arr[arrayIndex + 1].idx,
           },
         };
       },
@@ -35,6 +35,7 @@ export const initializeGame = createAction(
     return {
       payload: {
         gameId: game.id,
+        currentQuestion: sortedQuestions[0] ? sortedQuestions[0].idx : 0,
         questions,
         answers,
       },
