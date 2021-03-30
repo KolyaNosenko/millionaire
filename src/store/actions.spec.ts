@@ -114,4 +114,14 @@ describe("initializeGame", () => {
 
     expect(result.currentQuestion).toEqual(question1.idx);
   });
+
+  test("When call, then set gameId", () => {
+    const state = createStoreState();
+    const gameId = "111";
+    const game = createGameDTO({ id: gameId });
+
+    const result = reducer(state, initializeGame(game));
+
+    expect(result.gameId).toEqual(gameId);
+  });
 });

@@ -21,6 +21,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.screen = GameScreens.OVER;
     })
     .addCase(initializeGame, (state, { payload }) => {
+      state.gameId = payload.gameId || "";
       state.questions = payload.questions;
       state.answers = payload.answers;
       state.screen = GameScreens.IN_PROGRESS;
