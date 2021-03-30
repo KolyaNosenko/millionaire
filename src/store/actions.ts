@@ -36,3 +36,5 @@ export const initializeGame = createAction(
     };
   }
 );
+
+export const setAnswer = createAction<number>("SET_ANSWER");

@@ -1,13 +1,15 @@
 import {
+  createAnswer,
   createAnswerDTO,
   createGameDTO,
+  createQuestion,
   createQuestionDTO,
   createStoreState,
 } from "src/test-utils";
 import { GameScreens } from "src/types";
 
 import reducer from "./reducer";
-import { startGame, finishGame, initializeGame } from "./actions";
+import { startGame, finishGame, initializeGame, setAnswer } from "./actions";
 
 test("When call startGame, then switch step to IN_PROGRESS", () => {
   const state = createStoreState({ screen: GameScreens.START });
@@ -123,5 +125,61 @@ describe("initializeGame", () => {
     const result = reducer(state, initializeGame(game));
 
     expect(result.gameId).toEqual(gameId);
+  });
+});
+
+describe("setAnswer", () => {
+  test("When call with existing question and answer, then set answer to currentQuestion", () => {
+    const answerIndex = 3;
+    const answer = createAnswer({ idx: answerIndex });
+    const questionIndex = 1;
+    const question = createQuestion({
+      idx: questionIndex,
+      text: "How are you?",
+    });
+    const state = createStoreState({
+      questions: { [questionIndex]: question },
+      answers: { [questionIndex]: [answer] },
+      currentQuestion: questionIndex,
+    });
+
+    const result = reducer(state, setAnswer(answerIndex));
+
+    expect(result.questions[questionIndex].answer).toBe(answerIndex);
+  });
+
+  test("When answer with inx not found, then return same state", () => {
+    const questionIndex = 1;
+    const question = createQuestion({
+      idx: questionIndex,
+      text: "How are you?",
+    });
+    const state = createStoreState({
+      questions: { [questionIndex]: question },
+      currentQuestion: questionIndex,
+    });
+
+    const result = reducer(state, setAnswer(5));
+
+    expect(result).toEqual(state);
+  });
+
+  test("When question with inx not found, then return same state", () => {
+    const answerIndex = 3;
+    const answer = createAnswer({ idx: answerIndex });
+    const questionIndex = 1;
+    const question = createQuestion({
+      idx: questionIndex,
+      text: "How are you?",
+    });
+    const state = createStoreState({
+      questions: { [questionIndex]: question },
+      currentQuestion: 5,
+      answers: { [questionIndex]: [answer] },
+    });
+
+    const result = reducer(state, setAnswer(answerIndex));
+
+    expect(result).toEqual(state);
   });
 });
