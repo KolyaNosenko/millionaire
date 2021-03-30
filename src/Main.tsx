@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import React from "react";
+import { connect } from "react-redux";
+
 import { GameScreens } from "src/types";
 import GameInProgress from "src/screens/GameInProgress";
 import GameOver from "src/screens/GameOver";
 import GameStart from "src/screens/GameStart";
+import { StoreState } from "src/store";
 
 const MainRoot = styled.main`
   font-size: 16px;
@@ -41,4 +44,8 @@ Main.defaultProps = {
   screen: GameScreens.START,
 };
 
-export default Main;
+const mapStateToProps = (state: StoreState) => ({
+  screen: state.screen,
+});
+
+export default connect(mapStateToProps)(Main);

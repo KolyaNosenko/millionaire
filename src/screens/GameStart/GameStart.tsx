@@ -44,7 +44,11 @@ const GameStartButton = styled(Button)`
   min-width: 296px;
 `;
 
-const GameStart = (): JSX.Element => {
+const GameStart = ({
+  startGame,
+}: {
+  startGame: () => Promise<void>;
+}): JSX.Element => {
   return (
     <Root>
       <GreetingsIconWrapper>
@@ -54,7 +58,7 @@ const GameStart = (): JSX.Element => {
         <Title>
           Who wants to be <br /> millionaire?
         </Title>
-        <GameStartButton>Start</GameStartButton>
+        <GameStartButton onClick={startGame}>Start</GameStartButton>
       </InfoWrapper>
     </Root>
   );
