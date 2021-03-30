@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Score from "src/components/Score";
 import Answer from "src/components/Answer";
+// TODO check this
+import { Question as QuestionType, Answer as AnswerType } from "src/types";
 
 const Root = styled.div`
   height: 100%;
@@ -60,18 +62,37 @@ const AnswerListItem = styled.li`
   width: 389px;
 `;
 
-const GameInProgress = (): JSX.Element => {
+export interface Props {
+  question?: QuestionType;
+  answers: Array<AnswerType>;
+  answerQuestion: (answerIdx: number) => Promise<void>;
+}
+
+const GameInProgress = ({
+  question,
+  answers,
+  answerQuestion,
+}: Props): JSX.Element => {
+  const onQuestionAnswered = (answerIdx: number) => {
+    answerQuestion(answerIdx);
+  };
+
   return (
     <Root>
       <Content>
-        <Question>
-          How old your elder brother was 10 years before you was born, mate?
-        </Question>
+        <Question>{question?.text}</Question>
 
         <AnswerList>
-          <AnswerListItem>
-            <Answer />
-          </AnswerListItem>
+          {answers.map((answer) => {
+            return (
+              <AnswerListItem key={answer.idx}>
+                <Answer
+                  label={answer.text}
+                  onClick={() => onQuestionAnswered(answer.idx)}
+                />
+              </AnswerListItem>
+            );
+          })}
         </AnswerList>
       </Content>
       <ScoreBarWrapper>

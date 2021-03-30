@@ -15,10 +15,11 @@ export const initializeGame = createAction(
       (acc: { [index: number]: Question }, question, arrayIndex, arr) => {
         answers[question.idx] = sortAnswers(question.answers);
 
+        const { answers: ans, ...quoteProps } = question;
         return {
           ...acc,
           [question.idx]: {
-            ...question,
+            ...quoteProps,
             nextQuestionIndex: arr[arrayIndex + 1] && arr[arrayIndex + 1].idx,
           },
         };

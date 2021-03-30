@@ -53,14 +53,15 @@ const AnswerContent = styled.div`
 
 export interface Props {
   status?: "initial" | "correct" | "incorrect";
+  label?: string;
+  onClick?: () => void;
 }
 
-const Answer = ({ status = "initial" }: Props): JSX.Element => {
-  console.warn(status);
+const Answer = ({ status = "initial", label = "", onClick }: Props): JSX.Element => {
   return (
     <AnswerWrapper>
-      <AnswerContent>
-        <AnswerText>A 10 years</AnswerText>
+      <AnswerContent onClick={onClick}>
+        <AnswerText>A {label}</AnswerText>
         <AnswerBackground />
       </AnswerContent>
     </AnswerWrapper>
