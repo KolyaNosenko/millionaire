@@ -11,12 +11,11 @@ const Root = styled.div`
 `;
 
 const Content = styled.div`
+  overflow-y: auto;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  // TODO change to proper
-  padding: 80px;
+  padding: 133px 80px 122px;
   background-color: ${(props) => props.theme.colors.secondaryLight2};
 `;
 
@@ -52,14 +51,24 @@ const ScoreBarItem = styled.li`
   }
 `;
 
-const AnswerList = styled.ul`
-  // TODO change
+const answerGutter = "32px";
+
+const AnswerList = styled.div`
   margin-top: auto;
+  padding-top: 30px;
+  max-width: 844px;
 `;
 
-const AnswerListItem = styled.li`
-  // TODO change
-  width: 389px;
+const AnswerListInner = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -${answerGutter};
+`;
+
+const AnswerListItem = styled.div`
+  flex: 0 0 auto;
+  width: 50%;
+  padding-bottom: ${answerGutter};
 `;
 
 export interface Props {
@@ -82,30 +91,35 @@ const GameInProgress = ({
   return (
     <Root>
       <Content>
-        <Question>{question?.text}</Question>
+        <Question>
+          How old your elder brother was 10 years before you was born, mate?
+        </Question>
 
         <AnswerList>
-          {answers.map((answer) => {
-            return (
-              <AnswerListItem key={answer.idx}>
-                <Answer
-                  label={answer.text}
-                  onClick={() => onQuestionAnswered(answer.idx)}
-                />
-              </AnswerListItem>
-            );
-          })}
+          <AnswerListInner>
+            <AnswerListItem>
+              <Answer variant="A">10 years</Answer>
+            </AnswerListItem>
+            <AnswerListItem>
+              <Answer variant="B">10 years</Answer>
+            </AnswerListItem>
+            <AnswerListItem>
+              <Answer variant="C">10 years</Answer>
+            </AnswerListItem>
+            <AnswerListItem>
+              <Answer variant="D">10 years</Answer>
+            </AnswerListItem>
+          </AnswerListInner>
         </AnswerList>
       </Content>
       <ScoreBarWrapper>
         <ScoreBar>
-          {questionPrizes.map((questionWithPrize) => {
-            return (
-              <ScoreBarItem key={questionWithPrize.idx}>
-                <Score status="passed">{questionWithPrize.prize}</Score>
-              </ScoreBarItem>
-            );
-          })}
+          <ScoreBarItem>
+            <Score status="passed">$64,000</Score>
+          </ScoreBarItem>
+          <ScoreBarItem>
+            <Score status="active">$500</Score>
+          </ScoreBarItem>
         </ScoreBar>
       </ScoreBarWrapper>
     </Root>
