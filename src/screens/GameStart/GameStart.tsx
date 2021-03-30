@@ -7,14 +7,22 @@ import MainTitle from "src/components/MainTitle";
 const Root = styled.div`
   height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 30px;
+  padding: 80px;
   background: linear-gradient(
     to left top,
     ${(props) => props.theme.colors.primaryLight2} 50%,
     #ffffff 50%
   );
+
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    padding: 48px 16px;
+  }
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    justify-content: flex-end;
+  }
 `;
 
 const GreetingsIcon = styled(_GreetingsIcon)`
@@ -28,18 +36,52 @@ const GreetingsIconWrapper = styled.div`
   max-width: 452px;
   font-size: 0;
   line-height: 0;
+
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    margin: 0 auto 10px;
+    max-width: 350px;
+    width: 100%;
+  }
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    max-width: 196px;
+  }
 `;
 
-// TODO think about naming
+const Content = styled.div`
+  padding-bottom: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    padding-bottom: 0;
+  }
+`;
+
 const InfoWrapper = styled.div`
   ${MainTitle} {
     margin-bottom: 64px;
+
+    @media ${(props) => props.theme.breakpoints.mobile} {
+      margin-bottom: 18vh;
+    }
   }
 `;
 
 const GameStartButton = styled(Button)`
   max-width: 296px;
   width: 100%;
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    max-width: none;
+  }
 `;
 
 const GameStart = ({
@@ -49,15 +91,17 @@ const GameStart = ({
 }): JSX.Element => {
   return (
     <Root>
-      <GreetingsIconWrapper>
-        <GreetingsIcon />
-      </GreetingsIconWrapper>
-      <InfoWrapper>
-        <MainTitle>
-          Who wants to be <br /> millionaire?
-        </MainTitle>
-        <GameStartButton onClick={startGame}>Start</GameStartButton>
-      </InfoWrapper>
+      <Content>
+        <GreetingsIconWrapper>
+          <GreetingsIcon />
+        </GreetingsIconWrapper>
+        <InfoWrapper>
+          <MainTitle>
+            Who wants to be <br /> millionaire?
+          </MainTitle>
+          <GameStartButton onClick={startGame}>Start</GameStartButton>
+        </InfoWrapper>
+      </Content>
     </Root>
   );
 };
