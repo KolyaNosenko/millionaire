@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { rgba } from "polished";
 import { ReactComponent as _GreetingsIcon } from "src/assets/icons/greetings.svg";
 import Button from "src/components/Button";
+import MainTitle from "src/components/MainTitle";
 
 const Root = styled.div`
   height: 100%;
@@ -21,12 +22,6 @@ const GreetingsIcon = styled(_GreetingsIcon)`
 const GreetingsIconWrapper = styled.div`
   margin-right: 118px;
 `;
-// TODO maybe move to typography components
-const Title = styled.h1`
-  font-family: ${(props) => props.theme.fontFamilies.primarySemiBold};
-  font-size: 56px;
-  line-height: 1.16;
-`;
 
 const Subtitle = styled.h3`
   font-family: ${(props) => props.theme.fontFamilies.primarySemiBold};
@@ -38,7 +33,7 @@ const Subtitle = styled.h3`
 
 // TODO think about naming
 const InfoWrapper = styled.div`
-  ${Title} {
+  ${MainTitle} {
     margin-bottom: 64px;
   }
 `;
@@ -55,7 +50,7 @@ const GameOver = (): JSX.Element => {
       </GreetingsIconWrapper>
       <InfoWrapper>
         <Subtitle>Total score:</Subtitle>
-        <Title>$8,000 earned</Title>
+        <MainTitle>$8,000 earned</MainTitle>
         <GameStartButton>Try again</GameStartButton>
       </InfoWrapper>
     </Root>

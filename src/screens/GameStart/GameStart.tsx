@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 import { ReactComponent as _GreetingsIcon } from "src/assets/icons/greetings.svg";
 import Button from "src/components/Button";
+import MainTitle from "src/components/MainTitle";
 
-// TODO think about semantic
 const Root = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding: 30px;
   background: linear-gradient(
     to left top,
     ${(props) => props.theme.colors.primaryLight2} 50%,
@@ -18,30 +18,28 @@ const Root = styled.div`
 `;
 
 const GreetingsIcon = styled(_GreetingsIcon)`
-  // TODO think about this
-  width: 451.61px;
-  height: 356.59px;
+  width: 100%;
+  height: auto;
 `;
 
 const GreetingsIconWrapper = styled.div`
   margin-right: 118px;
-`;
-// TODO maybe move to typography components
-const Title = styled.h1`
-  font-family: ${(props) => props.theme.fontFamilies.primarySemiBold};
-  font-size: 56px;
-  line-height: 1.16;
+  flex: 1;
+  max-width: 452px;
+  font-size: 0;
+  line-height: 0;
 `;
 
 // TODO think about naming
 const InfoWrapper = styled.div`
-  ${Title} {
+  ${MainTitle} {
     margin-bottom: 64px;
   }
 `;
 
 const GameStartButton = styled(Button)`
-  min-width: 296px;
+  max-width: 296px;
+  width: 100%;
 `;
 
 const GameStart = ({
@@ -55,9 +53,9 @@ const GameStart = ({
         <GreetingsIcon />
       </GreetingsIconWrapper>
       <InfoWrapper>
-        <Title>
+        <MainTitle>
           Who wants to be <br /> millionaire?
-        </Title>
+        </MainTitle>
         <GameStartButton onClick={startGame}>Start</GameStartButton>
       </InfoWrapper>
     </Root>
