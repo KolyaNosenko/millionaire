@@ -91,35 +91,34 @@ const GameInProgress = ({
   return (
     <Root>
       <Content>
-        <Question>
-          How old your elder brother was 10 years before you was born, mate?
-        </Question>
+        {question && <Question>{question.text}</Question>}
 
         <AnswerList>
           <AnswerListInner>
-            <AnswerListItem>
-              <Answer variant="A">10 years</Answer>
-            </AnswerListItem>
-            <AnswerListItem>
-              <Answer variant="B">10 years</Answer>
-            </AnswerListItem>
-            <AnswerListItem>
-              <Answer variant="C">10 years</Answer>
-            </AnswerListItem>
-            <AnswerListItem>
-              <Answer variant="D">10 years</Answer>
-            </AnswerListItem>
+            {answers.map((answer) => {
+              return (
+                <AnswerListItem key={answer.idx}>
+                  <Answer
+                    variant="B"
+                    onClick={() => onQuestionAnswered(answer.idx)}
+                  >
+                    {answer.text}
+                  </Answer>
+                </AnswerListItem>
+              );
+            })}
           </AnswerListInner>
         </AnswerList>
       </Content>
       <ScoreBarWrapper>
         <ScoreBar>
-          <ScoreBarItem>
-            <Score status="passed">$64,000</Score>
-          </ScoreBarItem>
-          <ScoreBarItem>
-            <Score status="active">$500</Score>
-          </ScoreBarItem>
+          {questionPrizes.map((questionWithPrize) => {
+            return (
+              <ScoreBarItem key={questionWithPrize.idx}>
+                <Score status="passed">{questionWithPrize.prize}</Score>
+              </ScoreBarItem>
+            );
+          })}
         </ScoreBar>
       </ScoreBarWrapper>
     </Root>
