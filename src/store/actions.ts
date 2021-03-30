@@ -1,4 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
+import { sortAnswers, sortQuestions } from "src/utils";
 import { Answer, GameDTO, Question } from "../types";
 
 export const startGame = createAction("START_GAME");
@@ -6,20 +7,13 @@ export const finishGame = createAction("FINISH_GAME");
 export const initializeGame = createAction(
   "INITIALIZE_GAME",
   (game: GameDTO) => {
-    //  TODO move to utils
-    const sortedQuestions = [...game.questions].sort(
-      (question1, question2) => question1.idx - question2.idx
-    );
+    const sortedQuestions = sortQuestions(game.questions);
 
     const answers: { [questionIndex: number]: Array<Answer> } = {};
 
     const questions = sortedQuestions.reduce(
       (acc: { [index: number]: Question }, question, arrayIndex, arr) => {
-        //  TODO move to utils
-        const sortedAnswers = [...question.answers].sort(
-          (answer1, answer2) => answer1.idx - answer2.idx
-        );
-        answers[question.idx] = sortedAnswers;
+        answers[question.idx] = sortAnswers(question.answers);
 
         return {
           ...acc,
