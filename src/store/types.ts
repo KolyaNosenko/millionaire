@@ -1,8 +1,8 @@
-import { Answer, GameSteps, Question } from "src/types";
+import { Answer, GameScreens, Question } from "src/types";
 
 export interface StoreState {
   gameId?: string;
-  screen: GameSteps;
+  screen: GameScreens;
   currentQuestion: number;
   questions: { [questionIndex: number]: Question };
   answers: { [questionIndex: number]: Array<Answer> };

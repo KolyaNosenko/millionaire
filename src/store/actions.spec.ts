@@ -4,24 +4,24 @@ import {
   createQuestionDTO,
   createStoreState,
 } from "src/test-utils";
-import { GameSteps } from "src/types";
+import { GameScreens } from "src/types";
 
 import reducer from "./reducer";
 import { startGame, finishGame, initializeGame } from "./actions";
 
 test("When call startGame, then switch step to IN_PROGRESS", () => {
-  const state = createStoreState({ screen: GameSteps.START });
+  const state = createStoreState({ screen: GameScreens.START });
 
   const result = reducer(state, startGame());
 
-  expect(result.screen).toBe(GameSteps.IN_PROGRESS);
+  expect(result.screen).toBe(GameScreens.IN_PROGRESS);
 });
 
 test("When call finishGame, then switch step to OVER", () => {
-  const state = createStoreState({ screen: GameSteps.START });
+  const state = createStoreState({ screen: GameScreens.START });
 
   const result = reducer(state, finishGame());
-  expect(result.screen).toBe(GameSteps.OVER);
+  expect(result.screen).toBe(GameScreens.OVER);
 });
 
 describe("initializeGame", () => {
@@ -93,7 +93,7 @@ describe("initializeGame", () => {
 
     const result = reducer(state, initializeGame(game));
 
-    expect(result.screen).toEqual(GameSteps.IN_PROGRESS);
+    expect(result.screen).toEqual(GameScreens.IN_PROGRESS);
   });
 
   test("When call, then set currentQuestion to first question index", () => {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { GameSteps } from "src/types";
+import { GameScreens } from "src/types";
 import GameInProgress from "src/screens/GameInProgress";
 import GameOver from "src/screens/GameOver";
 import GameStart from "src/screens/GameStart";
@@ -14,19 +14,19 @@ const MainRoot = styled.main`
 `;
 
 const Main = ({
-  screen = GameSteps.START,
+  screen = GameScreens.START,
 }: {
-  screen?: GameSteps;
+  screen?: GameScreens;
 }): JSX.Element => {
   return (
     <MainRoot>
       {(() => {
         switch (screen) {
-          case GameSteps.IN_PROGRESS:
+          case GameScreens.IN_PROGRESS:
             return <GameInProgress />;
-          case GameSteps.OVER:
+          case GameScreens.OVER:
             return <GameOver />;
-          case GameSteps.START:
+          case GameScreens.START:
             return <GameStart />;
           default:
             //  TODO think about this
@@ -38,7 +38,7 @@ const Main = ({
 };
 
 Main.defaultProps = {
-  screen: GameSteps.START,
+  screen: GameScreens.START,
 };
 
 export default Main;

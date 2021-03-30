@@ -2,7 +2,7 @@ import { StoreState } from "src/store";
 import {
   AnswerDTO,
   GameDTO,
-  GameSteps,
+  GameScreens,
   Question,
   QuestionDTO,
 } from "src/types";
@@ -10,7 +10,7 @@ import {
 export function createStoreState(state: Partial<StoreState> = {}): StoreState {
   return {
     gameId: state.gameId || "123",
-    screen: state.screen || GameSteps.START,
+    screen: state.screen || GameScreens.START,
     currentQuestion: state.currentQuestion || 0,
     answers: state.answers || {},
     questions: state.questions || {},

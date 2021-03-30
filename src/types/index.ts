@@ -27,7 +27,7 @@ export interface Question {
 
 export type Answer = AnswerDTO;
 
-export enum GameSteps {
+export enum GameScreens {
   START,
   IN_PROGRESS,
   OVER,
