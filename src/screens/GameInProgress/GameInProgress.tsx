@@ -65,12 +65,14 @@ const AnswerListItem = styled.li`
 export interface Props {
   question?: QuestionType;
   answers: Array<AnswerType>;
+  questionPrizes: Array<QuestionType & { prize: number }>;
   answerQuestion: (answerIdx: number) => Promise<void>;
 }
 
 const GameInProgress = ({
   question,
   answers,
+  questionPrizes,
   answerQuestion,
 }: Props): JSX.Element => {
   const onQuestionAnswered = (answerIdx: number) => {
@@ -97,12 +99,13 @@ const GameInProgress = ({
       </Content>
       <ScoreBarWrapper>
         <ScoreBar>
-          <ScoreBarItem>
-            <Score status="passed">$1,000,000</Score>
-          </ScoreBarItem>
-          <ScoreBarItem>
-            <Score status="active">$1,000,000</Score>
-          </ScoreBarItem>
+          {questionPrizes.map((questionWithPrize) => {
+            return (
+              <ScoreBarItem key={questionWithPrize.idx}>
+                <Score status="passed">{questionWithPrize.prize}</Score>
+              </ScoreBarItem>
+            );
+          })}
         </ScoreBar>
       </ScoreBarWrapper>
     </Root>

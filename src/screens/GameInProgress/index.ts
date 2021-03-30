@@ -4,12 +4,14 @@ import { doAnswerQuestion, StoreDispatch, StoreState } from "src/store";
 import {
   getCurrentQuestion,
   getCurrentQuestionAnswers,
+  getQuestionsPrizes,
 } from "src/store/selectors";
 import GameInProgress from "./GameInProgress";
 
 const mapStateToProps = (state: StoreState) => ({
   question: getCurrentQuestion(state),
   answers: getCurrentQuestionAnswers(state),
+  questionPrizes: getQuestionsPrizes(state),
 });
 
 const mapDispatchToProps = (dispatch: StoreDispatch) => {
