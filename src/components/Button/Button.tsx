@@ -32,9 +32,10 @@ const ButtonRoot = styled.button`
     border-color: ${(props) => props.theme.colors.primaryDark};
   }
 
-  //&:disabled {
-  //  opacity: 0.65;
-  //}
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    font-size: 14px;
+    min-height: 48px;
+  }
 `;
 
 const ButtonLabel = styled.span`
