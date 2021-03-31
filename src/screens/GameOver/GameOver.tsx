@@ -82,6 +82,7 @@ const InfoWrapper = styled.div`
   }
 
   ${Subtitle} {
+    margin-bottom: 8px;
     color: ${(props) => rgba(props.theme.colors.secondaryDark, 0.5)};
   }
 `;
