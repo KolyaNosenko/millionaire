@@ -37,12 +37,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run test:summary && react-scripts build",
     "test": "react-scripts test",
+    "test:summary": "npm test -- --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.ts{,x}",
     "lint:fix": "yarn lint -- --fix",
-    "predeploy": "npm run build",
+    "predeploy": "yarn test:summary && npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
