@@ -4,6 +4,7 @@ import Button from "src/components/Button";
 import MainTitle from "src/components/MainTitle";
 import Subtitle from "src/components/Subtitle";
 import { rgba } from "polished";
+import { normalizePrice } from "src/utils";
 
 const Root = styled.div`
   height: 100%;
@@ -87,7 +88,12 @@ const GameStartButton = styled(Button)`
   }
 `;
 
-const GameOver = (): JSX.Element => {
+export interface Props {
+  finalPrize: number;
+  restartGame: () => Promise<void>;
+}
+
+const GameOver = ({ finalPrize, restartGame }: Props): JSX.Element => {
   return (
     <Root>
       <Content>
@@ -96,8 +102,8 @@ const GameOver = (): JSX.Element => {
         </GreetingsIconWrapper>
         <InfoWrapper>
           <Subtitle>Total score:</Subtitle>
-          <MainTitle>$8,000 earned</MainTitle>
-          <GameStartButton>Try again</GameStartButton>
+          <MainTitle>{normalizePrice(finalPrize)} earned</MainTitle>
+          <GameStartButton onClick={restartGame}>Try again</GameStartButton>
         </InfoWrapper>
       </Content>
     </Root>

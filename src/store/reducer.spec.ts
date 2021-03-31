@@ -9,22 +9,7 @@ import {
 import { GameScreens } from "src/types";
 
 import reducer from "./reducer";
-import { finishGame, initializeGame, nextQuestion, setAnswer, startGame } from "./actions";
-
-test("When call startGame, then switch step to IN_PROGRESS", () => {
-  const state = createStoreState({ screen: GameScreens.START });
-
-  const result = reducer(state, startGame());
-
-  expect(result.screen).toBe(GameScreens.IN_PROGRESS);
-});
-
-test("When call finishGame, then switch step to OVER", () => {
-  const state = createStoreState({ screen: GameScreens.START });
-
-  const result = reducer(state, finishGame());
-  expect(result.screen).toBe(GameScreens.OVER);
-});
+import { initializeGame, nextQuestion, setAnswer } from "./actions";
 
 describe("initializeGame", () => {
   test("When call, then create question key value pair by index", () => {

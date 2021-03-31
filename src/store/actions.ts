@@ -1,9 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 import { sortAnswers, sortQuestions } from "src/utils";
-import { Answer, GameDTO, Question } from "../types";
+import { Answer, GameDTO, Question } from "src/types";
 
-export const startGame = createAction("START_GAME");
-export const finishGame = createAction("FINISH_GAME");
 export const initializeGame = createAction(
   "INITIALIZE_GAME",
   (game: GameDTO) => {
@@ -37,7 +35,6 @@ export const initializeGame = createAction(
     };
   }
 );
-
 export const setAnswer = createAction<number>("SET_ANSWER");
-
 export const nextQuestion = createAction("NEXT_QUESTION");
+export const clearGame = createAction("CLEAR_GAME");

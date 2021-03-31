@@ -2,11 +2,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { GameScreens } from "src/types";
 import {
-  finishGame,
+  clearGame,
   initializeGame,
   nextQuestion,
   setAnswer,
-  startGame,
 } from "./actions";
 
 import { StoreState } from "./types";
@@ -20,12 +19,6 @@ const initialState: StoreState = {
 
 const reducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(startGame, (state) => {
-      state.screen = GameScreens.IN_PROGRESS;
-    })
-    .addCase(finishGame, (state) => {
-      state.screen = GameScreens.OVER;
-    })
     .addCase(initializeGame, (state, { payload }) => {
       state.gameId = payload.gameId || "";
       state.questions = payload.questions;
@@ -84,6 +77,10 @@ const reducer = createReducer(initialState, (builder) => {
       }
 
       state.screen = GameScreens.OVER;
+    })
+    // TODO add test
+    .addCase(clearGame, () => {
+      return initialState;
     });
 });
 

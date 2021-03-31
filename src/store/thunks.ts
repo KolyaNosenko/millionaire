@@ -1,6 +1,6 @@
 import { sleep, TIMEOUT_AFTER_ANSWER } from "src/utils";
 import { ThunkedAction } from "./types";
-import { initializeGame, nextQuestion, setAnswer } from "./actions";
+import { clearGame, initializeGame, nextQuestion, setAnswer } from "./actions";
 
 export function doStartGame(): ThunkedAction {
   return async (dispatch) => {
@@ -14,5 +14,12 @@ export function doAnswerQuestion(answerIdx: number): ThunkedAction {
     dispatch(setAnswer(answerIdx));
     await sleep(TIMEOUT_AFTER_ANSWER);
     dispatch(nextQuestion());
+  };
+}
+
+export function doRestartGame(): ThunkedAction {
+  return async (dispatch) => {
+    dispatch(clearGame());
+    dispatch(doStartGame());
   };
 }
