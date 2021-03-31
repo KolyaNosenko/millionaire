@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 import Score, { ScoreStatus } from "src/components/Score";
 import Answer, { AnswerStatus } from "src/components/Answer";
 import { Answer as AnswerType, Question as QuestionType } from "src/types";
 import { deriveAlphabetCharByIndex } from "src/utils";
 
+import MenuControl from "src/components/MenuControl";
 import {
   Root,
   Content,
@@ -13,6 +16,7 @@ import {
   ScoreBar,
   ScoreBarItem,
   ScoreBarWrapper,
+  MobileHeader,
 } from "./styled";
 
 export interface Props {
@@ -28,6 +32,8 @@ const GameInProgress = ({
   questionPrizes,
   answerQuestion,
 }: Props): JSX.Element => {
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+
   const onQuestionAnswered = (answerIdx: number) => {
     answerQuestion(answerIdx);
   };
@@ -46,7 +52,8 @@ const GameInProgress = ({
   ): ScoreStatus => {
     if (!currentQuestion) return ScoreStatus.INCOMING;
 
-    if (questionWithPrize.idx > currentQuestion.idx) return ScoreStatus.INCOMING;
+    if (questionWithPrize.idx > currentQuestion.idx)
+      return ScoreStatus.INCOMING;
 
     if (questionWithPrize.idx < currentQuestion.idx) return ScoreStatus.PASSED;
 
@@ -55,6 +62,12 @@ const GameInProgress = ({
 
   return (
     <Root>
+      <MobileHeader>
+        <MenuControl
+          isOpen={isMenuOpened}
+          onClick={() => setIsMenuOpened(!isMenuOpened)}
+        />
+      </MobileHeader>
       <Content>
         {currentQuestion && <Question>{currentQuestion.text}</Question>}
 
@@ -76,7 +89,7 @@ const GameInProgress = ({
           </AnswerListInner>
         </AnswerList>
       </Content>
-      <ScoreBarWrapper>
+      <ScoreBarWrapper isOpened={isMenuOpened}>
         <ScoreBar>
           {questionPrizes.map((questionWithPrize) => {
             return (

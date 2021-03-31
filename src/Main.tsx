@@ -9,6 +9,7 @@ import GameStart from "src/screens/GameStart";
 import { StoreState } from "src/store";
 
 const MainRoot = styled.main`
+  position: relative;
   font-size: 16px;
   font-family: ${(props) => props.theme.fontFamilies.primaryRegular}, serif;
   color: ${(props) => props.theme.colors.secondaryDark};

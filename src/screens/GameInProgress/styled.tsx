@@ -6,6 +6,21 @@ export const Root = styled.div`
   display: flex;
 `;
 
+export const MobileHeader = styled.div`
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    display: flex;
+  }
+`;
+
 export const Content = styled.div`
   overflow-y: auto;
   flex-grow: 1;
@@ -37,7 +52,7 @@ export const Question = styled(Subtitle)`
 
 export const ScoreBar = styled.ul``;
 
-export const ScoreBarWrapper = styled.div`
+export const ScoreBarWrapper = styled.div<{ isOpened?: boolean }>`
   width: 376px;
   flex-shrink: 0;
   padding-top: 15px;
@@ -56,7 +71,19 @@ export const ScoreBarWrapper = styled.div`
   }
 
   @media ${(props) => props.theme.breakpoints.mobile} {
+    position: fixed;
+    top: 56px;
+    right: 0;
     width: 100%;
+    // TODO calculate
+    height: calc(100vh - 56px);
+    transition: transform 0.3s ease-in-out;
+    background-color: ${(props) => props.theme.colors.secondaryLight2};
+    transform: ${({ isOpened }) =>
+      isOpened ? "translateX(0)" : "translateX(100%)"};
+    z-index: 9999;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 `;
 
