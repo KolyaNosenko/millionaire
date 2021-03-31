@@ -94,6 +94,18 @@ const AnswerContent = styled.div<{ status?: AnswerStatus }>`
   font-size: 20px;
   line-height: 1.16;
 
+  @media ${(props) => props.theme.breakpoints.laptop} {
+    font-size: 18px;
+    min-height: 65px;
+  }
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    font-size: 14px;
+    min-height: 56px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
   &:before,
   &:after {
     content: "";

@@ -37,6 +37,11 @@ export const ScoreWrapper = styled.div<{
         ? props.theme.colors.primary
         : props.theme.colors.secondary};
   }
+
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 `;
 
 export const ScoreBackground = styled(_ScoreBackground)<{
@@ -54,7 +59,6 @@ export const ScoreBackground = styled(_ScoreBackground)<{
       : props.theme.colors.secondary};
 `;
 
-// TODO add transitions
 export const ScoreContent = styled.div`
   position: relative;
   min-height: 40px;
@@ -62,9 +66,17 @@ export const ScoreContent = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 20px;
-  // TODO add global line-height
   line-height: 1.16;
   padding: 8px 24px;
+
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    font-size: 18px;
+  }
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    min-height: 32px;
+    font-size: 14px;
+  }
 `;
 
 export const ScoreLabel = styled.div<{ status: ScoreStatus }>`
