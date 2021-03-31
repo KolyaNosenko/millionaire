@@ -18,4 +18,4 @@ export async function sleep(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-export const TIMEOUT_AFTER_ANSWER = 500;
+export const TIMEOUT_AFTER_ANSWER = 800;

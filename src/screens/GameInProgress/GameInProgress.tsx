@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Score from "src/components/Score";
-import Answer from "src/components/Answer";
+import Answer, { AnswerStatus } from "src/components/Answer";
 // TODO check this
 import { Question as QuestionType, Answer as AnswerType } from "src/types";
 import Subtitle from "src/components/Subtitle";
@@ -86,6 +86,15 @@ const GameInProgress = ({
     answerQuestion(answerIdx);
   };
 
+  const getAnswerStatus = (answer: AnswerType) => {
+    if (!question || answer.idx !== question.answer)
+      return AnswerStatus.INITIAL;
+
+    return question.correctAnswer === answer.idx
+      ? AnswerStatus.CORRECT
+      : AnswerStatus.INCORRECT;
+  };
+
   return (
     <Root>
       <Content>
@@ -97,6 +106,7 @@ const GameInProgress = ({
               return (
                 <AnswerListItem key={answer.idx}>
                   <Answer
+                    status={getAnswerStatus(answer)}
                     variant="B"
                     onClick={() => onQuestionAnswered(answer.idx)}
                   >

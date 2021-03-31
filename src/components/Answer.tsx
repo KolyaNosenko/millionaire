@@ -2,6 +2,19 @@ import styled, { css } from "styled-components";
 import { ReactComponent as _AnswerBackground } from "src/assets/icons/answer-bg.svg";
 import React from "react";
 
+export enum AnswerStatus {
+  INITIAL = "initial",
+  CORRECT = "correct",
+  INCORRECT = "incorrect",
+}
+
+export interface Props {
+  status?: AnswerStatus;
+  onClick?: () => void;
+  children: React.ReactText;
+  variant?: string;
+}
+
 const AnswerText = styled.div`
   display: flex;
   align-items: center;
@@ -70,7 +83,7 @@ const incorrectStyles = css`
   }
 `;
 
-const AnswerContent = styled.div<{ status?: Status }>`
+const AnswerContent = styled.div<{ status?: AnswerStatus }>`
   cursor: pointer;
   position: relative;
   // TODO think about this
@@ -124,27 +137,16 @@ const AnswerContent = styled.div<{ status?: Status }>`
     }
   }
 
-  ${(props) => props.status === "correct" && correctStyles}
-
-  ${(props) => props.status === "incorrect" && incorrectStyles}
+  ${(props) => props.status === AnswerStatus.CORRECT && correctStyles}
+  ${(props) => props.status === AnswerStatus.INCORRECT && incorrectStyles}
 `;
-
 // TODO think about this
 // ${AnswerBackground}: {
 //   stroke: ${(props) => props.theme.colors.primary};
 // }
 
-type Status = "initial" | "correct" | "incorrect";
-
-export interface Props {
-  status?: Status;
-  onClick?: () => void;
-  children: React.ReactText;
-  variant?: string;
-}
-
 const Answer = ({
-  status = "initial",
+  status = AnswerStatus.INITIAL,
   onClick,
   children,
   variant = "",
