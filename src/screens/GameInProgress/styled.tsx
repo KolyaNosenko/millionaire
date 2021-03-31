@@ -21,6 +21,8 @@ export const MobileHeader = styled.div`
   }
 `;
 
+const mobileHeaderHeight = "56px";
+
 export const Content = styled.div`
   overflow-y: auto;
   flex-grow: 1;
@@ -34,7 +36,7 @@ export const Content = styled.div`
   }
 
   @media ${(props) => props.theme.breakpoints.mobile} {
-    padding: 24px 0;
+    padding: ${mobileHeaderHeight} 0 24px;
   }
 `;
 
@@ -45,8 +47,6 @@ export const Question = styled(Subtitle)`
     padding-right: 16px;
     padding-left: 16px;
     margin-top: auto;
-    // TODO check this
-    padding-bottom: 39px;
   }
 `;
 
@@ -72,11 +72,10 @@ export const ScoreBarWrapper = styled.div<{ isOpened?: boolean }>`
 
   @media ${(props) => props.theme.breakpoints.mobile} {
     position: fixed;
-    top: 56px;
+    top: ${mobileHeaderHeight};
     right: 0;
     width: 100%;
-    // TODO calculate
-    height: calc(100vh - 56px);
+    height: calc(100vh - ${mobileHeaderHeight});
     transition: transform 0.3s ease-in-out;
     background-color: ${(props) => props.theme.colors.secondaryLight2};
     transform: ${({ isOpened }) =>
@@ -99,6 +98,10 @@ export const AnswerList = styled.div`
   margin-top: auto;
   padding-top: 30px;
   max-width: 844px;
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    padding-top: 17px;
+  }
 `;
 
 export const AnswerListInner = styled.div`

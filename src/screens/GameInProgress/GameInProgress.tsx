@@ -3,7 +3,9 @@ import { useState } from "react";
 import Score, { ScoreStatus } from "src/components/Score";
 import Answer, { AnswerStatus } from "src/components/Answer";
 import { Answer as AnswerType, Question as QuestionType } from "src/types";
-import { deriveAlphabetCharByIndex } from "src/utils";
+import {
+  deriveAlphabetCharByIndex
+} from "src/utils";
 
 import MenuControl from "src/components/MenuControl";
 import {
@@ -34,6 +36,10 @@ const GameInProgress = ({
 }: Props): JSX.Element => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  const onMenuControlClick = () => {
+    setIsMenuOpened(!isMenuOpened);
+  };
+
   const onQuestionAnswered = (answerIdx: number) => {
     answerQuestion(answerIdx);
   };
@@ -63,10 +69,7 @@ const GameInProgress = ({
   return (
     <Root>
       <MobileHeader>
-        <MenuControl
-          isOpen={isMenuOpened}
-          onClick={() => setIsMenuOpened(!isMenuOpened)}
-        />
+        <MenuControl isOpen={isMenuOpened} onClick={onMenuControlClick} />
       </MobileHeader>
       <Content>
         {currentQuestion && <Question>{currentQuestion.text}</Question>}
