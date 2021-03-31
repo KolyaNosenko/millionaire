@@ -44,9 +44,9 @@ const ButtonLabel = styled.span`
   justify-content: inherit;
 `;
 
-const Button = (
-  props: ButtonHTMLAttributes<HTMLButtonElement>
-): JSX.Element => {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button = (props: ButtonProps): JSX.Element => {
   const { children, ...otherProps } = props;
 
   return (
@@ -54,6 +54,43 @@ const Button = (
       <ButtonLabel>{children}</ButtonLabel>
     </ButtonRoot>
   );
+};
+
+export type IconButtonProps = ButtonProps;
+
+const IconButtonRoot = styled(Button)`
+  flex: 0 0 auto;
+  overflow: visible;
+  border-radius: 50%;
+  text-align: center;
+  padding: 8px;
+  min-height: auto;
+  border: none;
+  background: transparent;
+  color: ${({ theme }) => theme.colors.secondaryDark};
+
+  @media ${(props) => props.theme.breakpoints.mobile} {
+    padding: 5px;
+  }
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+
+  svg {
+    fill: currentColor;
+    transition: fill 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    flex-shrink: 0;
+    display: inline-block;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+  }
+`;
+
+export const IconButton = (props: IconButtonProps): JSX.Element => {
+  return <IconButtonRoot {...props} />;
 };
 
 export default Button;
