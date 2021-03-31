@@ -33,8 +33,6 @@
     "eslint-plugin-jest": "^24.3.2",
     "eslint-plugin-prettier": "^3.3.1",
     "gh-pages": "^3.1.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1"
   },
   "scripts": {
@@ -64,19 +62,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "npm run lint:fix",
-      "prettier --write",
-      "npm t -- --bail --findRelatedTests",
-      "git add"
     ]
   }
 }
