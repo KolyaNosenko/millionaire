@@ -18,4 +18,8 @@ export async function sleep(time: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+export function normalizeScorePrice(score: number | string): string {
+  return `$${score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+}
+
 export const TIMEOUT_AFTER_ANSWER = 800;

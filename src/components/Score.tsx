@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as _ScoreBackground } from "src/assets/icons/score-bg.svg";
 import React from "react";
+import { normalizeScorePrice } from "../utils";
 
 export enum ScoreStatus {
   PASSED = "passed",
@@ -88,11 +89,12 @@ const Score = ({
   children,
   status = ScoreStatus.INCOMING,
 }: Props): JSX.Element => {
+  const normalizedScore = normalizeScorePrice(children);
   return (
     <ScoreWrapper status={status}>
       <ScoreContent>
         <ScoreBackground status={status} />
-        <ScoreLabel status={status}>${children}</ScoreLabel>
+        <ScoreLabel status={status}>{normalizedScore}</ScoreLabel>
       </ScoreContent>
     </ScoreWrapper>
   );
