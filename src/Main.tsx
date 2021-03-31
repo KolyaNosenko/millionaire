@@ -31,10 +31,8 @@ const Main = ({
           case GameScreens.OVER:
             return <GameOver />;
           case GameScreens.START:
-            return <GameStart />;
           default:
-            //  TODO think about this
-            return "Unknown step";
+            return <GameStart />;
         }
       })()}
     </MainRoot>
