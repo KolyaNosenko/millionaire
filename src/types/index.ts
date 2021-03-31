@@ -7,7 +7,7 @@ export interface QuestionDTO {
   idx: number;
   text: string;
   price: number;
-  correctAnswer: number;
+  correctAnswers: Array<number>;
   answers: Array<AnswerDTO>;
 }
 
@@ -20,7 +20,7 @@ export interface Question {
   idx: number;
   text: string;
   price: number;
-  correctAnswer: number;
+  correctAnswers: Array<number>;
   answer?: number;
   nextQuestionIndex?: number;
 }

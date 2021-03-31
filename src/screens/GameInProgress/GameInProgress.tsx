@@ -3,7 +3,7 @@ import { useState } from "react";
 import Score, { ScoreStatus } from "src/components/Score";
 import Answer, { AnswerStatus } from "src/components/Answer";
 import { Answer as AnswerType, Question as QuestionType } from "src/types";
-import { deriveAlphabetCharByIndex } from "src/utils";
+import { deriveAlphabetCharByIndex, isAnswerCorrect } from "src/utils";
 import { IconButton } from "src/components/Button";
 import { ReactComponent as CloseIcon } from "src/assets/icons/close.svg";
 import { ReactComponent as MenuIcon } from "src/assets/icons/menu.svg";
@@ -48,7 +48,7 @@ const GameInProgress = ({
     if (!currentQuestion || answer.idx !== currentQuestion.answer)
       return AnswerStatus.INITIAL;
 
-    return currentQuestion.correctAnswer === answer.idx
+    return isAnswerCorrect(currentQuestion, answer.idx)
       ? AnswerStatus.CORRECT
       : AnswerStatus.INCORRECT;
   };

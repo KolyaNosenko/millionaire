@@ -1,3 +1,5 @@
+import { Question } from "../types";
+
 export function sortQuestions<T extends { idx: number }>(
   questions: Array<T>
 ): Array<T> {
@@ -54,5 +56,12 @@ const alphabet = [
 export const deriveAlphabetCharByIndex = (index: number): string => {
   return alphabet[index];
 };
+
+export function isAnswerCorrect(
+  question: Question,
+  answerIdx?: number
+): boolean {
+  return !!question.correctAnswers.find((a) => a === answerIdx);
+}
 
 export const TIMEOUT_AFTER_ANSWER = 800;

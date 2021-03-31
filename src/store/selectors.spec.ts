@@ -173,21 +173,21 @@ describe("getFinalPrize", () => {
     const correctAnswer1 = createQuestion({
       idx: 1,
       answer: 1,
-      correctAnswer: 1,
+      correctAnswers: [1],
       price: correctAnswer1Price,
     });
     const correctAnswer2Price = 300;
     const correctAnswer2 = createQuestion({
       idx: 2,
       answer: 2,
-      correctAnswer: 2,
+      correctAnswers: [2],
       price: correctAnswer2Price,
     });
     const question3Idx = 3;
     const incorrectAnswer = createQuestion({
       idx: question3Idx,
       answer: 1,
-      correctAnswer: 2,
+      correctAnswers: [2],
     });
     const state = createStoreState({
       questions: {

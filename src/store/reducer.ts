@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from "@reduxjs/toolkit";
 import { GameScreens } from "src/types";
+import { isAnswerCorrect } from "src/utils";
 import { clearGame, initializeGame, nextQuestion, setAnswer } from "./actions";
 
 import { StoreState } from "./types";
@@ -58,13 +59,13 @@ const reducer = createReducer(initialState, (builder) => {
         return;
       }
 
-      if (question.correctAnswer !== question.answer) {
+      if (!isAnswerCorrect(question, question.answer)) {
         state.screen = GameScreens.OVER;
         return;
       }
 
       if (
-        question.correctAnswer === question.answer &&
+        isAnswerCorrect(question, question.answer) &&
         (question.nextQuestionIndex || question.nextQuestionIndex === 0)
       ) {
         state.currentQuestion = question.nextQuestionIndex;

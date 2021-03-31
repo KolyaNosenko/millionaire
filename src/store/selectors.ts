@@ -1,5 +1,5 @@
 import { Answer, Question } from "src/types";
-import { sortQuestions } from "src/utils";
+import { isAnswerCorrect, sortQuestions } from "src/utils";
 import { StoreState } from "./types";
 // TODO add reselect
 export const getQuestion = (state: StoreState) => (
@@ -51,7 +51,7 @@ export const getFinalPrize = (state: StoreState): number => {
   const questions = getQuestions(state);
 
   return questions.reduce((acc: number, question) => {
-    if (question.answer === question.correctAnswer) {
+    if (isAnswerCorrect(question, question.answer)) {
       return acc + question.price;
     }
 

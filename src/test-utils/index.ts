@@ -33,7 +33,7 @@ export function createQuestionDTO(
     idx: 1,
     text: "How are you?",
     price: 100,
-    correctAnswer: 1,
+    correctAnswers: [1],
     answers: [],
     ...questionDTO,
   };
@@ -52,7 +52,7 @@ export function createQuestion(question: Partial<Question> = {}): Question {
     idx: 1,
     text: "How are you?",
     price: 100,
-    correctAnswer: 1,
+    correctAnswers: [1],
     ...question,
   };
 }
