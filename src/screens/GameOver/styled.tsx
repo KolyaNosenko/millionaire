@@ -36,7 +36,7 @@ export const GreetingsIconWrapper = styled.div`
   line-height: 0;
 
   @media ${(props) => props.theme.breakpoints.tablet} {
-    margin: 0 auto 10px;
+    margin: 0 auto 50px;
     max-width: 350px;
     width: 100%;
   }
