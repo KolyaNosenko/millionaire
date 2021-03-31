@@ -66,6 +66,13 @@ const Content = styled.div`
 
 // TODO think about naming
 const InfoWrapper = styled.div`
+  flex: 1;
+  max-width: 455px;
+
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    max-width: none;
+  }
+
   ${MainTitle} {
     margin-bottom: 64px;
 
