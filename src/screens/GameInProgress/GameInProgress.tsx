@@ -5,6 +5,7 @@ import Answer, { AnswerStatus } from "src/components/Answer";
 // TODO check this
 import { Answer as AnswerType, Question as QuestionType } from "src/types";
 import Subtitle from "src/components/Subtitle";
+import { deriveAlphabetCharByIndex } from "../../utils";
 
 const Root = styled.div`
   height: 100%;
@@ -115,12 +116,12 @@ const GameInProgress = ({
 
         <AnswerList>
           <AnswerListInner>
-            {answers.map((answer) => {
+            {answers.map((answer, index) => {
               return (
                 <AnswerListItem key={answer.idx}>
                   <Answer
                     status={getAnswerStatus(answer)}
-                    variant="B"
+                    variant={deriveAlphabetCharByIndex(index)}
                     onClick={() => onQuestionAnswered(answer.idx)}
                   >
                     {answer.text}

@@ -22,4 +22,37 @@ export function normalizeScorePrice(score: number | string): string {
   return `$${score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
 }
 
+const alphabet = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+
+export const deriveAlphabetCharByIndex = (index: number): string => {
+  return alphabet[index];
+};
+
 export const TIMEOUT_AFTER_ANSWER = 800;
