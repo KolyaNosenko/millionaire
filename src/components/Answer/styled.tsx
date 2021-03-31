@@ -73,7 +73,6 @@ const incorrectStyles = css`
 export const AnswerContent = styled.div<{ status?: AnswerStatus }>`
   cursor: pointer;
   position: relative;
-  // TODO think about this
   min-height: 72px;
   display: flex;
   align-items: center;

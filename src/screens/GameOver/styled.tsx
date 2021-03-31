@@ -23,7 +23,6 @@ export const Root = styled.div`
 `;
 
 export const GreetingsIcon = styled(_GreetingsIcon)`
-  // TODO think about this
   width: 100%;
   height: auto;
 `;

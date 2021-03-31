@@ -62,7 +62,6 @@ export const ScoreBarWrapper = styled.div<{ isOpened?: boolean }>`
   justify-content: center;
 
   ${ScoreBar} {
-    // TODO add scroll
     overflow-y: auto;
   }
 
