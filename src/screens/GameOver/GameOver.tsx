@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { rgba } from "polished";
 import { ReactComponent as _GreetingsIcon } from "src/assets/icons/greetings.svg";
 import Button from "src/components/Button";
 import MainTitle from "src/components/MainTitle";
+import Subtitle from "src/components/Subtitle";
+import { rgba } from "polished";
 
 const Root = styled.div`
   height: 100%;
@@ -62,22 +63,6 @@ const Content = styled.div`
   }
 `;
 
-const Subtitle = styled.h3`
-  font-family: ${(props) => props.theme.fontFamilies.primarySemiBold};
-  color: ${(props) => rgba(props.theme.colors.secondaryDark, 0.5)};
-  font-size: 32px;
-  line-height: 1.16;
-  margin-bottom: 8px;
-
-  @media ${(props) => props.theme.breakpoints.laptop} {
-    font-size: 26px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.mobile} {
-    font-size: 18px;
-  }
-`;
-
 // TODO think about naming
 const InfoWrapper = styled.div`
   ${MainTitle} {
@@ -86,6 +71,10 @@ const InfoWrapper = styled.div`
     @media ${(props) => props.theme.breakpoints.mobile} {
       margin-bottom: 18vh;
     }
+  }
+
+  ${Subtitle} {
+    color: ${(props) => rgba(props.theme.colors.secondaryDark, 0.5)};
   }
 `;
 

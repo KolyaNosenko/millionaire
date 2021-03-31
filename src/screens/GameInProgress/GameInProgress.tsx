@@ -4,6 +4,7 @@ import Score from "src/components/Score";
 import Answer from "src/components/Answer";
 // TODO check this
 import { Question as QuestionType, Answer as AnswerType } from "src/types";
+import Subtitle from "src/components/Subtitle";
 
 const Root = styled.div`
   height: 100%;
@@ -19,10 +20,7 @@ const Content = styled.div`
   background-color: ${(props) => props.theme.colors.secondaryLight2};
 `;
 
-const Question = styled.p`
-  font-size: 32px;
-  line-height: 1.16;
-  font-family: ${(props) => props.theme.fontFamilies.primarySemiBold};
+const Question = styled(Subtitle)`
   max-width: 624px;
 `;
 
