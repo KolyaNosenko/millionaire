@@ -5,7 +5,7 @@ import Answer, { AnswerStatus } from "src/components/Answer";
 // TODO check this
 import { Answer as AnswerType, Question as QuestionType } from "src/types";
 import Subtitle from "src/components/Subtitle";
-import { deriveAlphabetCharByIndex } from "../../utils";
+import { deriveAlphabetCharByIndex } from "src/utils";
 
 const Root = styled.div`
   height: 100%;
