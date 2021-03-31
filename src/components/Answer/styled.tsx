@@ -48,12 +48,11 @@ const correctStyles = css`
     fill: ${(props) => props.theme.colors.successLight2};
   }
 
-  :before,
-  :after,
-  :hover :before,
-  :hover :after {
-    // TODO change this
-    border-color: ${(props) => props.theme.colors.success} !important;
+  &:before,
+  &:after,
+  &:hover:before,
+  &:hover:after {
+    border-color: ${(props) => props.theme.colors.success};
   }
 `;
 
@@ -64,11 +63,11 @@ const incorrectStyles = css`
     fill: ${(props) => props.theme.colors.errorLight2};
   }
 
-  :before,
-  :after,
-  &:hover :before,
-  &:hover :after {
-    border-color: ${(props) => props.theme.colors.error} !important;
+  &:before,
+  &:after,
+  &:hover:before,
+  &:hover:after {
+    border-color: ${(props) => props.theme.colors.error};
   }
 `;
 
@@ -125,7 +124,7 @@ export const AnswerContent = styled.div<{ status?: AnswerStatus }>`
       stroke: ${(props) => props.theme.colors.primary};
     }
 
-    :before,
+    &:before,
     &:after {
       border-color: ${(props) => props.theme.colors.primary};
     }
