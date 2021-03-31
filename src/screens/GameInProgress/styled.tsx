@@ -37,6 +37,10 @@ export const Content = styled.div`
     padding: 80px;
   }
 
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    padding: 80px 40px 40px;
+  }
+
   @media ${(props) => props.theme.breakpoints.mobile} {
     padding: ${mobileHeaderHeight} 0 24px;
   }
@@ -68,7 +72,7 @@ export const ScoreBarWrapper = styled.div<{ isOpened?: boolean }>`
   }
 
   @media ${(props) => props.theme.breakpoints.tablet} {
-    width: 250px;
+    width: 300px;
   }
 
   @media ${(props) => props.theme.breakpoints.mobile} {
@@ -76,7 +80,7 @@ export const ScoreBarWrapper = styled.div<{ isOpened?: boolean }>`
     right: 0;
     width: 100%;
     height: 100vh;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s linear;
     background-color: ${(props) => props.theme.colors.secondaryLight2};
     transform: ${({ isOpened }) =>
       isOpened ? "translateX(0)" : "translateX(100%)"};
@@ -99,8 +103,15 @@ export const AnswerList = styled.div`
   padding-top: 30px;
   max-width: 844px;
 
+  @media ${(props) => props.theme.breakpoints.tablet} {
+    margin-right: -40px;
+    margin-left: -40px;
+  }
+
   @media ${(props) => props.theme.breakpoints.mobile} {
     padding-top: 0;
+    margin-right: 0;
+    margin-left: 0;
   }
 `;
 
