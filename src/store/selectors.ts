@@ -10,14 +10,10 @@ export const getQuestion = (state: StoreState) => (
   return state.questions[questionIdx];
 };
 
-// TODO add tests
 export const getCurrentQuestion = (state: StoreState): Question | undefined => {
-  if (!state.questions[state.currentQuestion]) return undefined;
-
-  return state.questions[state.currentQuestion];
+  return getQuestion(state)(state.currentQuestion);
 };
 
-// TODO add tests
 export const getCurrentQuestionAnswers = (state: StoreState): Array<Answer> => {
   if (!state.answers[state.currentQuestion]) return [];
 

@@ -1,4 +1,5 @@
 import {
+  createAnswer,
   createQuestion,
   createQuestionDTO,
   createStoreState,
@@ -8,6 +9,8 @@ import {
   getQuestion,
   getQuestions,
   getQuestionsPrizes,
+  getCurrentQuestion,
+  getCurrentQuestionAnswers,
 } from "./selectors";
 
 describe("getQuestion", () => {
@@ -23,6 +26,66 @@ describe("getQuestion", () => {
     const result = getQuestion(state)(questionIdx);
 
     expect(result).toEqual(question);
+  });
+});
+
+describe("getCurrentQuestion", () => {
+  test("When current question exist, then return question object for current question", () => {
+    const questionIdx = 1;
+    const question = createQuestionDTO({ idx: questionIdx });
+    const state = createStoreState({
+      questions: {
+        [question.idx]: question,
+      },
+      currentQuestion: questionIdx,
+    });
+
+    const result = getCurrentQuestion(state);
+
+    expect(result).toEqual(question);
+  });
+
+  test("When current question not found, then return nothing", () => {
+    const questionIdx = 1;
+    const state = createStoreState({
+      currentQuestion: questionIdx,
+    });
+
+    const result = getCurrentQuestion(state);
+
+    expect(result).toBeFalsy();
+  });
+});
+
+describe("getCurrentQuestionAnswers", () => {
+  test("When current question exist, then return answers", () => {
+    const questionIdx = 1;
+    const answer = createAnswer();
+    const question = createQuestionDTO({ idx: questionIdx });
+    const state = createStoreState({
+      questions: {
+        [question.idx]: question,
+      },
+      answers: {
+        [question.idx]: [answer],
+      },
+      currentQuestion: questionIdx,
+    });
+
+    const result = getCurrentQuestionAnswers(state);
+
+    expect(result).toEqual([answer]);
+  });
+
+  test("When answers for current question not found, then return empty array", () => {
+    const questionIdx = 1;
+    const state = createStoreState({
+      currentQuestion: questionIdx,
+    });
+
+    const result = getCurrentQuestionAnswers(state);
+
+    expect(result).toHaveLength(0);
   });
 });
 
