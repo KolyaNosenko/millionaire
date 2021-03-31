@@ -1,21 +1,8 @@
 import styled, { css } from "styled-components";
 import { ReactComponent as _AnswerBackground } from "src/assets/icons/answer-bg.svg";
-import React from "react";
+import { AnswerStatus } from "./types";
 
-export enum AnswerStatus {
-  INITIAL = "initial",
-  CORRECT = "correct",
-  INCORRECT = "incorrect",
-}
-
-export interface Props {
-  status?: AnswerStatus;
-  onClick?: () => void;
-  children: React.ReactText;
-  variant?: string;
-}
-
-const AnswerText = styled.div`
+export const AnswerText = styled.div`
   display: flex;
   align-items: center;
   position: relative;
@@ -23,7 +10,7 @@ const AnswerText = styled.div`
   overflow: hidden;
 `;
 
-const AnswerLabel = styled.div`
+export const AnswerLabel = styled.div`
   flex-grow: 1;
   position: relative;
   white-space: nowrap;
@@ -31,14 +18,14 @@ const AnswerLabel = styled.div`
   overflow: hidden;
 `;
 
-const AnswerVariant = styled.span`
+export const AnswerVariant = styled.span`
   margin-right: 8px;
   flex-shrink: 0;
   font-family: ${(props) => props.theme.fontFamilies.primarySemiBold};
   color: ${(props) => props.theme.colors.primary};
 `;
 
-const AnswerWrapper = styled.div`
+export const AnswerWrapper = styled.div`
   position: relative;
   padding-right: 16px;
   padding-left: 16px;
@@ -83,7 +70,7 @@ const incorrectStyles = css`
   }
 `;
 
-const AnswerContent = styled.div<{ status?: AnswerStatus }>`
+export const AnswerContent = styled.div<{ status?: AnswerStatus }>`
   cursor: pointer;
   position: relative;
   // TODO think about this
@@ -156,24 +143,3 @@ const AnswerContent = styled.div<{ status?: AnswerStatus }>`
 // ${AnswerBackground}: {
 //   stroke: ${(props) => props.theme.colors.primary};
 // }
-
-const Answer = ({
-  status = AnswerStatus.INITIAL,
-  onClick,
-  children,
-  variant = "",
-}: Props): JSX.Element => {
-  return (
-    <AnswerWrapper>
-      <AnswerContent onClick={onClick} status={status}>
-        <AnswerText>
-          {variant && <AnswerVariant>{variant}</AnswerVariant>}
-          <AnswerLabel>{children}</AnswerLabel>
-        </AnswerText>
-        <AnswerBackground />
-      </AnswerContent>
-    </AnswerWrapper>
-  );
-};
-
-export default Answer;
