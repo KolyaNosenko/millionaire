@@ -34,7 +34,7 @@ export const getQuestionsPrizes = (
 ): Array<Question & { prize: number }> => {
   const questions = getQuestions(state);
 
-  return questions.reduce(
+  const questionsWithPrizes = questions.reduce(
     (acc: Array<Question & { prize: number }>, question, arrIndex) => {
       acc.push({
         ...question,
@@ -47,6 +47,8 @@ export const getQuestionsPrizes = (
     },
     []
   );
+
+  return questionsWithPrizes.reverse();
 };
 
 export const getFinalPrize = (state: StoreState): number => {

@@ -80,15 +80,15 @@ describe("getQuestionsPrizes", () => {
 
     expect(result[0]).toEqual(
       expect.objectContaining({
-        idx: question1.idx,
-        prize: question1Price,
+        idx: question2.idx,
+        prize: question1Price + question2Price,
       })
     );
 
     expect(result[1]).toEqual(
       expect.objectContaining({
-        idx: question2.idx,
-        prize: question1Price + question2Price,
+        idx: question1.idx,
+        prize: question1Price,
       })
     );
   });

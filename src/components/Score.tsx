@@ -92,7 +92,7 @@ const Score = ({
     <ScoreWrapper status={status}>
       <ScoreContent>
         <ScoreBackground status={status} />
-        <ScoreLabel status={status}>{children}</ScoreLabel>
+        <ScoreLabel status={status}>${children}</ScoreLabel>
       </ScoreContent>
     </ScoreWrapper>
   );
