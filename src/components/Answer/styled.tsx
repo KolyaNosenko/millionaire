@@ -33,6 +33,7 @@ export const AnswerWrapper = styled.div`
 `;
 
 export const AnswerBackground = styled(_AnswerBackground)`
+  z-index: 1;
   position: absolute;
   left: 0;
   top: 0;
@@ -49,9 +50,10 @@ const correctStyles = css`
 
   :before,
   :after,
-  &:hover :before,
-  &:hover :after {
-    border-color: ${(props) => props.theme.colors.success};
+  :hover :before,
+  :hover :after {
+    // TODO change this
+    border-color: ${(props) => props.theme.colors.success} !important;
   }
 `;
 
@@ -66,7 +68,7 @@ const incorrectStyles = css`
   :after,
   &:hover :before,
   &:hover :after {
-    border-color: ${(props) => props.theme.colors.error};
+    border-color: ${(props) => props.theme.colors.error} !important;
   }
 `;
 
@@ -100,17 +102,17 @@ export const AnswerContent = styled.div<{ status?: AnswerStatus }>`
     width: 100%;
     top: 50%;
     right: 100%;
-    transform: translateY(-50% 50%);
+    transform: translateY(-50%);
     border-top: thin solid ${(props) => props.theme.colors.secondary};
     transition: border-color 0.15s ease-in-out;
   }
 
   &:before {
-    right: 100%;
+    right: calc(100% - 1px);
   }
 
   &:after {
-    left: 100%;
+    left: calc(100% - 1px);
   }
 
   svg {

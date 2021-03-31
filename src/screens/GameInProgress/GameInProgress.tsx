@@ -1,24 +1,22 @@
-import { useState } from "react";
+import {useState} from "react";
 
-import Score, { ScoreStatus } from "src/components/Score";
-import Answer, { AnswerStatus } from "src/components/Answer";
-import { Answer as AnswerType, Question as QuestionType } from "src/types";
-import {
-  deriveAlphabetCharByIndex
-} from "src/utils";
+import Score, {ScoreStatus} from "src/components/Score";
+import Answer, {AnswerStatus} from "src/components/Answer";
+import {Answer as AnswerType, Question as QuestionType} from "src/types";
+import {deriveAlphabetCharByIndex} from "src/utils";
 
 import MenuControl from "src/components/MenuControl";
 import {
-  Root,
-  Content,
-  Question,
   AnswerList,
   AnswerListInner,
   AnswerListItem,
+  Content,
+  MobileHeader,
+  Question,
+  Root,
   ScoreBar,
   ScoreBarItem,
   ScoreBarWrapper,
-  MobileHeader,
 } from "./styled";
 
 export interface Props {
@@ -80,7 +78,7 @@ const GameInProgress = ({
               return (
                 <AnswerListItem key={answer.idx}>
                   <Answer
-                    status={getAnswerStatus(answer)}
+                    status={AnswerStatus.INCORRECT}
                     variant={deriveAlphabetCharByIndex(index)}
                     onClick={() => onQuestionAnswered(answer.idx)}
                   >

@@ -19,11 +19,11 @@ const Answer = ({
   return (
     <AnswerWrapper>
       <AnswerContent onClick={onClick} status={status}>
+        <AnswerBackground />
         <AnswerText>
           {variant && <AnswerVariant>{variant}</AnswerVariant>}
           <AnswerLabel>{children}</AnswerLabel>
         </AnswerText>
-        <AnswerBackground />
       </AnswerContent>
     </AnswerWrapper>
   );
