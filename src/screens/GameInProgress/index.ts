@@ -9,7 +9,7 @@ import {
 import GameInProgress from "./GameInProgress";
 
 const mapStateToProps = (state: StoreState) => ({
-  question: getCurrentQuestion(state),
+  currentQuestion: getCurrentQuestion(state),
   answers: getCurrentQuestionAnswers(state),
   questionPrizes: getQuestionsPrizes(state),
 });

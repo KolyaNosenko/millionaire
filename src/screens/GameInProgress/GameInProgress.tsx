@@ -1,6 +1,5 @@
 import Score, { ScoreStatus } from "src/components/Score";
 import Answer, { AnswerStatus } from "src/components/Answer";
-// TODO check this
 import { Answer as AnswerType, Question as QuestionType } from "src/types";
 import { deriveAlphabetCharByIndex } from "src/utils";
 
@@ -17,15 +16,14 @@ import {
 } from "./styled";
 
 export interface Props {
-  // TODO rename to current question
-  question?: QuestionType;
+  currentQuestion?: QuestionType;
   answers: Array<AnswerType>;
   questionPrizes: Array<QuestionType & { prize: number }>;
   answerQuestion: (answerIdx: number) => Promise<void>;
 }
 
 const GameInProgress = ({
-  question,
+  currentQuestion,
   answers,
   questionPrizes,
   answerQuestion,
@@ -35,10 +33,10 @@ const GameInProgress = ({
   };
 
   const getAnswerStatus = (answer: AnswerType): AnswerStatus => {
-    if (!question || answer.idx !== question.answer)
+    if (!currentQuestion || answer.idx !== currentQuestion.answer)
       return AnswerStatus.INITIAL;
 
-    return question.correctAnswer === answer.idx
+    return currentQuestion.correctAnswer === answer.idx
       ? AnswerStatus.CORRECT
       : AnswerStatus.INCORRECT;
   };
@@ -46,11 +44,11 @@ const GameInProgress = ({
   const getScoreStatus = (
     questionWithPrize: QuestionType & { prize: number }
   ): ScoreStatus => {
-    if (!question) return ScoreStatus.INCOMING;
+    if (!currentQuestion) return ScoreStatus.INCOMING;
 
-    if (questionWithPrize.idx > question.idx) return ScoreStatus.INCOMING;
+    if (questionWithPrize.idx > currentQuestion.idx) return ScoreStatus.INCOMING;
 
-    if (questionWithPrize.idx < question.idx) return ScoreStatus.PASSED;
+    if (questionWithPrize.idx < currentQuestion.idx) return ScoreStatus.PASSED;
 
     return ScoreStatus.ACTIVE;
   };
@@ -58,7 +56,7 @@ const GameInProgress = ({
   return (
     <Root>
       <Content>
-        {question && <Question>{question.text}</Question>}
+        {currentQuestion && <Question>{currentQuestion.text}</Question>}
 
         <AnswerList>
           <AnswerListInner>
