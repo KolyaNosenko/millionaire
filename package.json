@@ -44,8 +44,8 @@
     "test:summary": "npm test -- --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.ts{,x}",
-    "lint:fix": "yarn lint -- --fix",
-    "predeploy": "yarn test:summary && npm run build",
+    "lint:fix": "npm run lint -- --fix",
+    "predeploy": "npm run test:summary && npm run build",
     "deploy": "gh-pages -d build"
   },
   "husky": {
