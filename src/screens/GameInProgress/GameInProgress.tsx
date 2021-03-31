@@ -78,7 +78,7 @@ const GameInProgress = ({
               return (
                 <AnswerListItem key={answer.idx}>
                   <Answer
-                    status={AnswerStatus.INCORRECT}
+                    status={getAnswerStatus(answer)}
                     variant={deriveAlphabetCharByIndex(index)}
                     onClick={() => onQuestionAnswered(answer.idx)}
                   >
