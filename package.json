@@ -50,14 +50,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx lint-staged"
+      "pre-commit": "npx lint-staged",
+      "pre-push": "npm run test:summary"
     }
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run lint",
       "prettier --write",
-      "npm t -- --watchAll=false --bail --findRelatedTests",
       "git add"
     ]
   },
