@@ -4,7 +4,7 @@
     {
       "idx": 1,
       "text": "In witch city Beatles were founded?",
-      "price": 100,
+      "price": 500,
       "correctAnswer": 2,
       "answers": [
         { "idx": 1, "text": "London" },
@@ -16,7 +16,7 @@
     {
       "idx": 2,
       "text": "Which is most populous continent?",
-      "price": 100,
+      "price": 500,
       "correctAnswer": 4,
       "answers": [
         { "idx": 1, "text": "Africa" },
@@ -28,7 +28,7 @@
     {
       "idx": 3,
       "text": "What is the capital of New Zealand?",
-      "price": 100,
+      "price": 1000,
       "correctAnswer": 3,
       "answers": [
         { "idx": 1, "text": "Sidney" },
@@ -40,7 +40,7 @@
     {
       "idx": 4,
       "text": "In which country is Mount Everest?",
-      "price": 100,
+      "price": 2000,
       "correctAnswer": 1,
       "answers": [
         { "idx": 1, "text": "Nepal" },
@@ -52,7 +52,7 @@
     {
       "idx": 5,
       "text": "How many rings are there in the Olympic Games symbol?",
-      "price": 100,
+      "price": 4000,
       "correctAnswer": 3,
       "answers": [
         { "idx": 1, "text": "7" },
@@ -64,7 +64,7 @@
     {
       "idx": 6,
       "text": "Which sport is played at Wimbledon?",
-      "price": 100,
+      "price": 8000,
       "correctAnswer": 3,
       "answers": [
         { "idx": 1, "text": "football" },
@@ -76,7 +76,7 @@
     {
       "idx": 7,
       "text": "Who invented the telephone?",
-      "price": 100,
+      "price": 16000,
       "correctAnswer": 2,
       "answers": [
         { "idx": 1, "text": "Thomas Alva Edison" },
@@ -88,7 +88,7 @@
     {
       "idx": 8,
       "text": "Who developed the theory of relativity?",
-      "price": 100,
+      "price": 32000,
       "correctAnswer": 1,
       "answers": [
         { "idx": 1, "text": "Albert Einstein" },
@@ -100,7 +100,7 @@
     {
       "idx": 9,
       "text": "Who wrote the books about Harry Potter?",
-      "price": 100,
+      "price": 61000,
       "correctAnswer": 4,
       "answers": [
         { "idx": 1, "text": "Agatha Christie" },
@@ -112,7 +112,7 @@
     {
       "idx": 10,
       "text": "The Princess Diana was wife of...",
-      "price": 100,
+      "price": 125000,
       "correctAnswer": 2,
       "answers": [
         { "idx": 1, "text": "Prince Wilhelm" },
@@ -124,7 +124,7 @@
     {
       "idx": 11,
       "text": "The city that has the nickname of \"Big Apple\"",
-      "price": 100,
+      "price": 250000,
       "correctAnswer": 1,
       "answers": [
         { "idx": 1, "text": "New York" },
@@ -136,7 +136,7 @@
     {
       "idx": 12,
       "text": "What do children usually say at Halloween",
-      "price": 100,
+      "price": 500000,
       "correctAnswer": 1,
       "answers": [
         { "idx": 1, "text": "trick or treat" },
