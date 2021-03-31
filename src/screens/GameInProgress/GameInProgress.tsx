@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import Score from "src/components/Score";
+import Score, { ScoreStatus } from "src/components/Score";
 import Answer, { AnswerStatus } from "src/components/Answer";
 // TODO check this
-import { Question as QuestionType, Answer as AnswerType } from "src/types";
+import { Answer as AnswerType, Question as QuestionType } from "src/types";
 import Subtitle from "src/components/Subtitle";
 
 const Root = styled.div`
@@ -70,6 +70,7 @@ const AnswerListItem = styled.div`
 `;
 
 export interface Props {
+  // TODO rename to current question
   question?: QuestionType;
   answers: Array<AnswerType>;
   questionPrizes: Array<QuestionType & { prize: number }>;
@@ -86,13 +87,25 @@ const GameInProgress = ({
     answerQuestion(answerIdx);
   };
 
-  const getAnswerStatus = (answer: AnswerType) => {
+  const getAnswerStatus = (answer: AnswerType): AnswerStatus => {
     if (!question || answer.idx !== question.answer)
       return AnswerStatus.INITIAL;
 
     return question.correctAnswer === answer.idx
       ? AnswerStatus.CORRECT
       : AnswerStatus.INCORRECT;
+  };
+
+  const getScoreStatus = (
+    questionWithPrize: QuestionType & { prize: number }
+  ): ScoreStatus => {
+    if (!question) return ScoreStatus.INCOMING;
+
+    if (questionWithPrize.idx > question.idx) return ScoreStatus.INCOMING;
+
+    if (questionWithPrize.idx < question.idx) return ScoreStatus.PASSED;
+
+    return ScoreStatus.ACTIVE;
   };
 
   return (
@@ -123,7 +136,9 @@ const GameInProgress = ({
           {questionPrizes.map((questionWithPrize) => {
             return (
               <ScoreBarItem key={questionWithPrize.idx}>
-                <Score status="passed">{questionWithPrize.prize}</Score>
+                <Score status={getScoreStatus(questionWithPrize)}>
+                  {questionWithPrize.prize}
+                </Score>
               </ScoreBarItem>
             );
           })}
