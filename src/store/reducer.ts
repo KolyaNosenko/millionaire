@@ -1,12 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from "@reduxjs/toolkit";
 import { GameScreens } from "src/types";
-import {
-  clearGame,
-  initializeGame,
-  nextQuestion,
-  setAnswer,
-} from "./actions";
+import { clearGame, initializeGame, nextQuestion, setAnswer } from "./actions";
 
 import { StoreState } from "./types";
 
