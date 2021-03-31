@@ -73,7 +73,6 @@ const reducer = createReducer(initialState, (builder) => {
 
       state.screen = GameScreens.OVER;
     })
-    // TODO add test
     .addCase(clearGame, () => {
       return initialState;
     });
